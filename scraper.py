@@ -2,14 +2,18 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import csv
+import send_mail
+from datetime import date
 
 # List with the stock's urls from yahoo finance
 urls = ["https://finance.yahoo.com/quote/GOOGL?p=GOOGL&.tsrc=fin-srch", "https://finance.yahoo.com/quote/AMZN?p=AMZN&.tsrc=fin-srch", "https://finance.yahoo.com/quote/NFLX?p=NFLX&.tsrc=fin-srch", "https://finance.yahoo.com/quote/TSLA?p=TSLA&.tsrc=fin-srch", "https://finance.yahoo.com/quote/FB2A.BE?p=FB2A.BE&.tsrc=fin-srch", "https://finance.yahoo.com/quote/MSFT?p=MSFT&.tsrc=fin-srch"]
 
 headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36'}
 
+# Output of today's date.
+today = str(date.today()) + ".csv"
 # Open csv file
-csv_file = open("scraper.csv", "w")
+csv_file = open(today, "w")
 csv.writer = csv.writer(csv_file)
 # Write the values to the csv file (headings)
 csv.writer.writerow(["STOCK NAME", "CURRENT PRICE", "PREVIOUS CLOSE", "OPEN", "BID", "ASK", "DAY'S RANGE", "52 WEEK RANGE", "VOLUME", "AVG. VOLUME"])
@@ -45,5 +49,10 @@ for url in urls:
     
 # Close csv file once is completed.
 csv_file.close()
+
+# Call function send()
+send_mail.send(filename=today)
+
+
 
 
