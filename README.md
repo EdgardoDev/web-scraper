@@ -1,5 +1,5 @@
 <div align="center" id="top"> 
-  <img src="<img src="https://github.com/EdgardoDev/MyFiles/blob/main/Python.svg.png?raw=true" alt="Python Logo" height="200" width="200"/>" alt="Web Scraper" />
+  <img src="https://github.com/EdgardoDev/MyFiles/blob/main/Python.svg.png?raw=true" alt="Python Logo" height="200" width="200"/>
 </div>
 
 <h1 align="center">Web Scraper</h1>
